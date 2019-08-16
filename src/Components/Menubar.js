@@ -14,10 +14,10 @@ const useStyles = makeStyles({
 
 
 const menuBarItems = [
-    { 'key': 'home', 'to': '/', 'name': 'Home' },
-    { 'key': 'about', 'to': '/about', 'name': 'About' },
-    { 'key': 'projects', 'to': '/projects', 'name': 'Projects' },
-    { 'key': 'skills', 'to': '/skills', 'name': 'Skills' },
+    { 'key': 'home', 'to': '/personal-site-react/', 'name': 'Home' },
+    { 'key': 'about', 'to': '/personal-site-react/about', 'name': 'About' },
+    { 'key': 'projects', 'to': '/personal-site-react/projects', 'name': 'Projects' },
+    { 'key': 'skills', 'to': '/personal-site-react/skills', 'name': 'Skills' },
 ]
 
 
