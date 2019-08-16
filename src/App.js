@@ -16,10 +16,10 @@ class App extends Component {
         <div>
           <div>
             <Menubar />
-            <Route exact path="/personal-site-react/" component={Home} />
-            <Route path="/personal-site-react/about" component={About} />
-            <Route path="/personal-site-react/projects" component={Project} />
-            <Route path="/personal-site-react/skills" component={Skills} />
+            <Route exact path="/" component={Home} />
+            <Route path="/about" component={About} />
+            <Route path="/projects" component={Project} />
+            <Route path="/skills" component={Skills} />
           </div>
           <div>
             <Footer />
