@@ -12,14 +12,14 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <div>
           <div>
             <Menubar />
-            <Route exact path="/personal-site-react/" component={Home} />
-            <Route path="/personal-site-react/about" component={About} />
-            <Route path="/personal-site-react/projects" component={Project} />
-            <Route path="/personal-site-react/skills" component={Skills} />
+            <Route exact path="/" component={Home} />
+            <Route path="/about" component={About} />
+            <Route path="/projects" component={Project} />
+            <Route path="/skills" component={Skills} />
           </div>
           <div>
             <Footer />
