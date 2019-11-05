@@ -12,7 +12,7 @@ class App extends Component {
   render() {
     return (
       <div style={{ width: '100%' }}>
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
           <React.Fragment>
             <Menubar />
             <Switch>
