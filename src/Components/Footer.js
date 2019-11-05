@@ -1,21 +1,10 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import BottomNavigation from '@material-ui/core/BottomNavigation';
 import github from '../static/images/logo_github.png';
 import email from '../static/images/email.png';
 import linkedin from '../static/images/logo_likedin.png';
 import website from '../static/images/website.png';
 import FooterItem from './FooterItem';
 
-const useStyles = makeStyles({
-    root: {
-        position: 'fixed',
-        padding: '0',
-        bottom: '0',
-        width: '100%',
-        backgroundColor: '#ECECEC',
-    },
-});
 
 const footerItems = [
     { 'key': 'github', 'value': 'GitHub', 'link': 'https://github.com/treyham91', 'image': github },
@@ -25,29 +14,19 @@ const footerItems = [
 ]
 
 const Footer = (props) => {
-    const classes = useStyles();
-    const [value, setValue] = React.useState(null);
 
     return (
-        <BottomNavigation
-            value={value}
-            onChange={(event, newValue) => {
-                if (value) {
-                    setValue(null);
-                }
-                else {
-                    setValue(newValue);
-                }
-            }}
-            showLabels
-            className={classes.root}
-        >
-            {footerItems.map(item => {
-                return (
-                    <FooterItem key={item.key} value={item.value} link={item.link} imageSrc={item.image} />
-                )
-            })}
-        </BottomNavigation>
+        <footer style={{ bottom: 0, width: '100%', borderTop: '1px solid lightgray', height: 100 }}>
+            <ul style={{ listStyle: 'none', display: 'flex', margin: 'auto', padding: '5px', width: '300px' }}>
+                {footerItems.map(item => {
+                    return (
+                        <li key={item.key}>
+                            <FooterItem link={item.link} imageSrc={item.image} value={item.value} />
+                        </li>
+                    )
+                })}
+            </ul>
+        </footer>
     );
 }
 

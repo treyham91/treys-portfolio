@@ -1,16 +1,7 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import MenubarItem from './MenubarItem';
-
-const useStyles = makeStyles({
-    root: {
-        flexGrow: 1,
-        backgroundColor: '#ECECEC',
-        minWidth: '100%'
-    },
-});
+import MobileMenubar from './MobileMenubar';
+import '../static/css/menubar.css';
 
 
 const menuBarItems = [
@@ -22,16 +13,20 @@ const menuBarItems = [
 
 
 const Menubar = (props) => {
-    const classes = useStyles();
 
     return (
-        <AppBar position="static" className={classes.root}>
-            <Toolbar style={{ marginLeft: '10px' }}>
-                {menuBarItems.map(item => {
-                    return <MenubarItem key={item.key} to={item.to} name={item.name} />
-                })}
-            </Toolbar>
-        </AppBar>
+        <React.Fragment>
+            <div id="menubar-container">
+                <div id="menubar-item-container">
+                    {menuBarItems.map(item => {
+                        return (
+                            <MenubarItem id="menubar-item" key={item.key} to={item.to} name={item.name} />
+                        )
+                    })}
+                </div>
+            </div>
+            <MobileMenubar />
+        </React.Fragment>
     );
 }
 

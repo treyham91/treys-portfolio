@@ -1,52 +1,50 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import { Link } from 'react-router-dom';
-
-const useStyles = makeStyles(theme => ({
-    root: {
-        padding: theme.spacing(3, 2),
-        backgroundColor: 'transparent',
-        boxShadow: 'none',
-        border: '1px solid #ECECEC',
-    },
-    text: {
-        color: '#ECECEC',
-        marginTop: '5px',
-        fontFamily: 'Varela Round, sans-serif',
-    },
-    button: {
-        color: '#ECECEC',
-        border: '1px solid #ECECEC',
-        marginTop: '10px',
-        fontFamily: 'Varela Round, sans-serif',
-        '&:hover': {
-            opacity: '0.8'
-        },
-    },
-    link: {
-        textDecoration: 'none',
-        color: '#ECECEC',
-        fontFamily: 'Varela Round, sans-serif',
-    }
-}));
+import React, { useState } from 'react';
+import '../../static/css/home.css';
+import Highlight from 'react-highlight.js';
 
 const Home = () => {
-    const classes = useStyles();
+    const [visitorName, setVisitorName] = useState("");
+
+    const codeValues = [
+        "import React from 'react';", "function VisitorName(props) {",
+        "return (", "<p>{props.visitorName}</p>", ")", "}",
+        "function Visitor()  {", "return (", "<div id=\"visitor-text-container\">",
+        '<VisitorName visitorName="', '"/>', "</div>", ")", "}", "export default Visitor;"
+    ]
 
     return (
-        <div style={{ width: '500px', margin: 'auto', marginTop: '200px' }}>
-            <Paper className={classes.root}>
-                <Typography className={classes.text} variant="h3" component="h2">
-                    Trey Hamilton
-                </Typography>
-                <Typography className={classes.text} style={{ fontSize: '25px' }} component="p">
-                    Software Developer
-                </Typography>
-                <Button className={classes.button}><Link to="/about" className={classes.link}>About Me</Link></Button>
-            </Paper>
+        <div id="home-body-container">
+            <div id="visitor-container">
+                <div id="visitor-textarea-container">
+                    <Highlight id="code-area" style={{ margin: 0 }} language="javascript">
+                        <p>{codeValues[0]}</p>
+                        <br />
+                        <p style={{ marginLeft: 10 }}>{codeValues[1]}</p>
+                        <p style={{ marginLeft: 15 }}>{codeValues[2]}</p>
+                        <p style={{ marginLeft: 20 }}>{codeValues[3]}</p>
+                        <p style={{ marginLeft: 15 }}>{codeValues[4]}</p>
+                        <p style={{ marginLeft: 5 }}>{codeValues[5]}</p>
+                        <br />
+                        <p style={{ marginLeft: 10 }}>{codeValues[6]}</p>
+                        <p style={{ marginLeft: 15 }}>{codeValues[7]}</p>
+                        <p style={{ marginLeft: 20 }}>{codeValues[8]}</p>
+                        <div style={{ display: 'flex' }}>
+                            <p style={{ marginLeft: 25 }}>{codeValues[9]}</p>
+                            <input placeholder="Name..." id="name-input" type="text" value={visitorName} onChange={event => setVisitorName(event.target.value)} />
+                            <p>{codeValues[10]}</p>
+                        </div>
+                        <p style={{ marginLeft: 20 }}>{codeValues[11]}</p>
+                        <p style={{ marginLeft: 15 }}>{codeValues[12]}</p>
+                        <p style={{ marginLeft: 10 }}>{codeValues[13]}</p>
+                        <br />
+                        <p>{codeValues[14]}</p>
+                    </Highlight>
+                </div>
+                <div id="visitor-name-container">
+                    <p id="visitor-name">Welcome!</p>
+                    <p style={{ fontSize: 50, fontFamily: 'Varela Round, sans-serif' }}>{visitorName}</p>
+                </div>
+            </div>
         </div>
     );
 }

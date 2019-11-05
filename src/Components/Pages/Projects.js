@@ -1,36 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import ProjectItem from '../ProjectItem';
-import Loading from '../Loading';
 import python from '../../static/images/pythonlogo.png';
 import javascript from '../../static/images/javascriptlogo.jpg';
 import R from '../../static/images/Rlogo.jpeg';
 import html from '../../static/images/html.png';
 import axios from 'axios';
-import Media from 'react-media';
+import '../../static/css/projects.css'
 
 const setImage = (language) => {
-    let image = null;
-    if (language === "Python" || language === "Jupyter Notebook") {
-        image = python
+    switch (language) {
+        case "Python" || "Jupyter Notebook":
+            return python;
+        case "Jupyter Notebook":
+            return python;
+        case "JavaScript":
+            return javascript;
+        case "HTML":
+            return html;
+        case "R":
+            return R;
+        default:
+            return null;
     }
-
-    else if (language === "JavaScript") {
-        image = javascript
-    }
-
-    else if (language === "HTML") {
-        image = html
-    }
-
-    else if (language === "R") {
-        image = R
-    }
-
-    else {
-        image = null
-    }
-
-    return image
 }
 
 
@@ -46,7 +37,7 @@ const Project = () => {
     useEffect(
         () => {
             setData({
-                projects: null,
+                projects: res.data,
                 pending: true,
                 error: false,
                 complete: false
@@ -73,63 +64,42 @@ const Project = () => {
     );
 
     return (
-        <div style={{ width: '100%', marginTop: '20px' }}>
-            {data.pending ? <Loading /> :
-                <div>
-                    <Media query="(max-width: 1440px)">
-                        {matches =>
-                            matches ? (
-                                <div>
-                                    <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-                                        {data.projects.slice(0, 2).map(repo => {
-                                            return (
-                                                <ProjectItem key={repo.id} image={setImage(repo.language)} imageTitle={repo.link} projectName={repo.name} projectDesription={repo.description} projectLink={repo.html_url} />
-                                            )
-                                        })}
-                                    </div>
-                                    <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-                                        {data.projects.slice(2, 4).map(repo => {
-                                            return (
-                                                <ProjectItem key={repo.id} image={setImage(repo.language)} imageTitle={repo.link} projectName={repo.name} projectDesription={repo.description} projectLink={repo.html_url} />
-                                            )
-                                        })}
-                                    </div>
-                                    <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-                                        {data.projects.slice(4, 6).map(repo => {
-                                            return (
-                                                <ProjectItem key={repo.id} image={setImage(repo.language)} imageTitle={repo.link} projectName={repo.name} projectDesription={repo.description} projectLink={repo.html_url} />
-                                            )
-                                        })}
-                                    </div>
-                                    <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-                                        {data.projects.slice(6, 8).map(repo => {
-                                            return (
-                                                <ProjectItem key={repo.id} image={setImage(repo.language)} imageTitle={repo.link} projectName={repo.name} projectDesription={repo.description} projectLink={repo.html_url} />
-                                            )
-                                        })}
-                                    </div>
-                                </div>
-                            ) :
-                                (
-                                    <div>
-                                        <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-                                            {data.projects.slice(0, 4).map(repo => {
-                                                return (
-                                                    <ProjectItem key={repo.id} image={setImage(repo.language)} imageTitle={repo.link} projectName={repo.name} projectDesription={repo.description} projectLink={repo.html_url} />
-                                                )
-                                            })}
-                                        </div>
-                                        <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-                                            {data.projects.slice(4, 8).map(repo => {
-                                                return (
-                                                    <ProjectItem key={repo.id} image={setImage(repo.language)} imageTitle={repo.link} projectName={repo.name} projectDesription={repo.description} projectLink={repo.html_url} />
-                                                )
-                                            })}
-                                        </div>
-                                    </div>
-                                )}
-                    </Media>
-                </div>}
+        <div id="project-container">
+            <h1>Projects Overview</h1>
+            <h3>This is a list of my projects on GitHub</h3>
+            <div className="project-items">
+                <div className="items">
+                    {pending ? 'Retrieving Projects...' :
+                        data.projects.slice(0, 5).map(repo => {
+                            return (
+                                <ProjectItem
+                                    key={repo.id}
+                                    image={setImage(repo.language)}
+                                    imageTitle={repo.link}
+                                    projectName={repo.name}
+                                    projectDesription={repo.description}
+                                    projectLink={repo.html_url}
+                                    onClick={() => window.location.href = repo.html_url} />
+                            )
+                        })}
+                </div>
+            </div>
+            <div className="project-items">
+                <div className="items">
+                    {data.projects.slice(5, 10).map(repo => {
+                        return (
+                            <ProjectItem
+                                key={repo.id}
+                                image={setImage(repo.language)}
+                                imageTitle={repo.link}
+                                projectName={repo.name}
+                                projectDesription={repo.description}
+                                projectLink={repo.html_url}
+                                onClick={() => window.location.href = repo.html_url} />
+                        )
+                    })}
+                </div>
+            </div>
         </div>
     );
 }
