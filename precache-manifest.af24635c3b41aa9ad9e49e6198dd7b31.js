@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "62476d740d76aadae143",
-    "url": "/treys-portfolio/static/css/main.6380293e.chunk.css"
+    "revision": "2d41dc532d9d5c7c0588",
+    "url": "/treys-portfolio/static/css/main.490fc9cb.chunk.css"
   },
   {
-    "revision": "62476d740d76aadae143",
-    "url": "/treys-portfolio/static/js/main.62476d74.chunk.js"
+    "revision": "2d41dc532d9d5c7c0588",
+    "url": "/treys-portfolio/static/js/main.2d41dc53.chunk.js"
   },
   {
     "revision": "e7dedf0ddb324f518188",
@@ -28,7 +28,7 @@ self.__precacheManifest = [
     "url": "/treys-portfolio/static/media/chip (1).210ee0e1.png"
   },
   {
-    "revision": "02a0bd957bb047c8f14ebeb80b79d064",
+    "revision": "215a0eb1bac1067d5bb4d873b07c073f",
     "url": "/treys-portfolio/index.html"
   }
 ];
